@@ -449,7 +449,7 @@ body { padding-left: 200px; }
       </div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-      <div class="header-date"><span class="dot"></span><span>2026-06-04 17:03 업데이트</span></div>
+      <div class="header-date"><span class="dot"></span><span>2026-06-05 07:29 업데이트</span></div>
       <div class="month-picker-wrap">
         <label class="month-picker-label">기준월</label>
         <span class="month-picker-sublabel">연도</span>
@@ -473,6 +473,7 @@ body { padding-left: 200px; }
     <button class="tab-btn" data-tab="pc_군산" onclick="switchTab('pc_군산')" style="display:none"><span class="b-dot" style="background:#d97706"></span>군산</button>
     <button class="tab-btn" data-tab="pc_목포" onclick="switchTab('pc_목포')" style="display:none"><span class="b-dot" style="background:#7c3aed"></span>목포</button>
     <button class="tab-btn" data-tab="pc_서산" onclick="switchTab('pc_서산')" style="display:none"><span class="b-dot" style="background:#db2777"></span>서산</button>
+    <button class="tab-btn" data-tab="pc_ccrs" onclick="switchTab('pc_ccrs')" style="display:none"><span style="color:var(--cyan);margin-right:4px">✎</span>CCR-S 입력</button>
     <div class="tab-sep"></div>
     <button class="tab-btn" data-tab="b_전주" onclick="switchTab('b_전주')"><span class="b-dot" style="background:#2563eb"></span>전주</button>
     <button class="tab-btn" data-tab="b_평택" onclick="switchTab('b_평택')"><span class="b-dot" style="background:#059669"></span>평택</button>
@@ -809,6 +810,7 @@ body { padding-left: 200px; }
 <div class="tab-content" id="tab-pc_군산"><div id="pcbd-군산"></div></div>
 <div class="tab-content" id="tab-pc_목포"><div id="pcbd-목포"></div></div>
 <div class="tab-content" id="tab-pc_서산"><div id="pcbd-서산"></div></div>
+<div class="tab-content" id="tab-pc_ccrs"><div id="pcbd-ccrs"></div></div>
 
 <!-- (end of proactive tab) -->
 
@@ -854,28 +856,28 @@ const PROACTIVE_DATA = {
   months:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
   kpis:[
     {key:"service",name:"Service Live",target:0.45,mode:"rate",branches:{
-      "NT":{m:[{n:2738,d:4653,r:0.5884},{n:1851,d:4015,r:0.461},{n:2737,d:5230,r:0.5233},{n:2636,d:5755,r:0.458},{n:2303,d:4496,r:0.5122},{n:141,d:265,r:0.5321},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null}],ytd:{n:12406,d:24414,r:0.5082}},
-      "전주":{m:[{n:1336,d:1936,r:0.6901},{n:839,d:1682,r:0.4988},{n:1108,d:2057,r:0.5386},{n:1135,d:2343,r:0.4844},{n:935,d:1865,r:0.5013},{n:25,d:89,r:0.2809},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:5378,d:9972,r:0.5393}},
-      "평택":{m:[{n:747,d:1394,r:0.5359},{n:447,d:1233,r:0.3625},{n:706,d:1577,r:0.4477},{n:759,d:1727,r:0.4395},{n:704,d:1331,r:0.5289},{n:75,d:104,r:0.7212},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:3438,d:7366,r:0.4667}},
-      "군산":{m:[{n:139,d:365,r:0.3808},{n:141,d:338,r:0.4172},{n:323,d:453,r:0.713},{n:286,d:527,r:0.5427},{n:240,d:402,r:0.597},{n:8,d:12,r:0.6667},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:1137,d:2097,r:0.5422}},
-      "목포":{m:[{n:272,d:486,r:0.5597},{n:264,d:401,r:0.6584},{n:353,d:601,r:0.5874},{n:216,d:565,r:0.3823},{n:219,d:478,r:0.4582},{n:25,d:15,r:1.6667},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:1349,d:2546,r:0.5299}},
-      "서산":{m:[{n:244,d:472,r:0.5169},{n:160,d:361,r:0.4432},{n:247,d:542,r:0.4557},{n:240,d:593,r:0.4047},{n:205,d:420,r:0.4881},{n:8,d:45,r:0.1778},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:1104,d:2433,r:0.4538}},
+      "NT":{m:[{n:2738,d:4653,r:0.5884},{n:1851,d:4015,r:0.461},{n:2737,d:5230,r:0.5233},{n:2636,d:5755,r:0.458},{n:2303,d:4496,r:0.5122},{n:257,d:404,r:0.6361},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null}],ytd:{n:12522,d:24553,r:0.51}},
+      "전주":{m:[{n:1336,d:1936,r:0.6901},{n:839,d:1682,r:0.4988},{n:1108,d:2057,r:0.5386},{n:1135,d:2343,r:0.4844},{n:935,d:1865,r:0.5013},{n:66,d:184,r:0.3587},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:5419,d:10067,r:0.5383}},
+      "평택":{m:[{n:747,d:1394,r:0.5359},{n:447,d:1233,r:0.3625},{n:706,d:1577,r:0.4477},{n:759,d:1727,r:0.4395},{n:704,d:1331,r:0.5289},{n:126,d:117,r:1.0769},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:3489,d:7379,r:0.4728}},
+      "군산":{m:[{n:139,d:365,r:0.3808},{n:141,d:338,r:0.4172},{n:323,d:453,r:0.713},{n:286,d:527,r:0.5427},{n:240,d:402,r:0.597},{n:15,d:28,r:0.5357},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:1144,d:2113,r:0.5414}},
+      "목포":{m:[{n:272,d:486,r:0.5597},{n:264,d:401,r:0.6584},{n:353,d:601,r:0.5874},{n:216,d:565,r:0.3823},{n:219,d:478,r:0.4582},{n:25,d:20,r:1.25},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:1349,d:2551,r:0.5288}},
+      "서산":{m:[{n:244,d:472,r:0.5169},{n:160,d:361,r:0.4432},{n:247,d:542,r:0.4557},{n:240,d:593,r:0.4047},{n:205,d:420,r:0.4881},{n:25,d:55,r:0.4545},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:1121,d:2443,r:0.4589}},
     }},
     {key:"rita",name:"RITA",target:0.05,mode:"rate",branches:{
-      "NT":{m:[{n:397,d:6956,r:0.0571},{n:401,d:4392,r:0.0913},{n:520,d:6896,r:0.0754},{n:548,d:6001,r:0.0913},{n:472,d:5268,r:0.0896},{n:18,d:789,r:0.0228},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null}],ytd:{n:2356,d:30302,r:0.0778}},
-      "전주":{m:[{n:198,d:2928,r:0.0676},{n:186,d:2235,r:0.0832},{n:197,d:3495,r:0.0564},{n:183,d:3178,r:0.0576},{n:214,d:2768,r:0.0773},{n:6,d:293,r:0.0205},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:984,d:14897,r:0.0661}},
-      "평택":{m:[{n:92,d:1995,r:0.0461},{n:120,d:1765,r:0.068},{n:151,d:2590,r:0.0583},{n:170,d:2241,r:0.0759},{n:87,d:2112,r:0.0412},{n:8,d:249,r:0.0321},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:628,d:10952,r:0.0573}},
-      "군산":{m:[{n:30,d:612,r:0.049},{n:28,d:515,r:0.0544},{n:56,d:769,r:0.0728},{n:78,d:655,r:0.1191},{n:66,d:581,r:0.1136},{n:1,d:67,r:0.0149},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:259,d:3199,r:0.081}},
-      "목포":{m:[{n:42,d:745,r:0.0564},{n:35,d:611,r:0.0573},{n:50,d:884,r:0.0566},{n:59,d:791,r:0.0746},{n:52,d:660,r:0.0788},{n:3,d:79,r:0.038},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:241,d:3770,r:0.0639}},
-      "서산":{m:[{n:35,d:676,r:0.0518},{n:32,d:516,r:0.062},{n:66,d:979,r:0.0674},{n:58,d:722,r:0.0803},{n:53,d:678,r:0.0782},{n:0,d:101,r:0},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:244,d:3672,r:0.0664}},
+      "NT":{m:[{n:397,d:6956,r:0.0571},{n:401,d:4392,r:0.0913},{n:520,d:6896,r:0.0754},{n:548,d:6001,r:0.0913},{n:472,d:5268,r:0.0896},{n:34,d:1094,r:0.0311},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null}],ytd:{n:2372,d:30607,r:0.0775}},
+      "전주":{m:[{n:198,d:2928,r:0.0676},{n:186,d:2235,r:0.0832},{n:197,d:3495,r:0.0564},{n:183,d:3178,r:0.0576},{n:214,d:2768,r:0.0773},{n:12,d:419,r:0.0286},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:990,d:15023,r:0.0659}},
+      "평택":{m:[{n:92,d:1995,r:0.0461},{n:120,d:1765,r:0.068},{n:151,d:2590,r:0.0583},{n:170,d:2241,r:0.0759},{n:87,d:2112,r:0.0412},{n:12,d:340,r:0.0353},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:632,d:11043,r:0.0572}},
+      "군산":{m:[{n:30,d:612,r:0.049},{n:28,d:515,r:0.0544},{n:56,d:769,r:0.0728},{n:78,d:655,r:0.1191},{n:66,d:581,r:0.1136},{n:2,d:88,r:0.0227},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:260,d:3220,r:0.0807}},
+      "목포":{m:[{n:42,d:745,r:0.0564},{n:35,d:611,r:0.0573},{n:50,d:884,r:0.0566},{n:59,d:791,r:0.0746},{n:52,d:660,r:0.0788},{n:6,d:109,r:0.055},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:244,d:3800,r:0.0642}},
+      "서산":{m:[{n:35,d:676,r:0.0518},{n:32,d:516,r:0.062},{n:66,d:979,r:0.0674},{n:58,d:722,r:0.0803},{n:53,d:678,r:0.0782},{n:2,d:138,r:0.0145},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null},{n:null,d:null,r:null}],ytd:{n:246,d:3709,r:0.0663}},
     }},
     {key:"oas",name:"OAS",target:0.45,mode:"rate",branches:{
-      "NT":{m:[{n:1674,d:4653,r:0.3598},{n:1709,d:4015,r:0.4257},{n:2168,d:5230,r:0.4145},{n:2532,d:5755,r:0.44},{n:2253,d:4496,r:0.5011},{n:272,d:265,r:1.0264},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null}],ytd:{n:10608,d:24414,r:0.4345}},
-      "전주":{m:[{n:724,d:1936,r:0.374},{n:608,d:1682,r:0.3615},{n:880,d:2057,r:0.4278},{n:1095,d:2343,r:0.4673},{n:978,d:1865,r:0.5244},{n:90,d:89,r:1.0112},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:4375,d:9972,r:0.4387}},
-      "평택":{m:[{n:520,d:1394,r:0.373},{n:611,d:1233,r:0.4955},{n:703,d:1577,r:0.4458},{n:809,d:1727,r:0.4684},{n:783,d:1331,r:0.5883},{n:105,d:104,r:1.0096},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:3531,d:7366,r:0.4794}},
-      "군산":{m:[{n:110,d:365,r:0.3014},{n:133,d:338,r:0.3935},{n:151,d:453,r:0.3333},{n:148,d:527,r:0.2808},{n:113,d:402,r:0.2811},{n:17,d:12,r:1.4167},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:672,d:2097,r:0.3205}},
-      "목포":{m:[{n:167,d:486,r:0.3436},{n:198,d:401,r:0.4938},{n:186,d:601,r:0.3095},{n:233,d:565,r:0.4124},{n:157,d:478,r:0.3285},{n:29,d:15,r:1.9333},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:970,d:2546,r:0.381}},
-      "서산":{m:[{n:153,d:472,r:0.3242},{n:159,d:361,r:0.4404},{n:248,d:542,r:0.4576},{n:247,d:593,r:0.4165},{n:222,d:420,r:0.5286},{n:31,d:45,r:0.6889},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:1060,d:2433,r:0.4357}},
+      "NT":{m:[{n:1674,d:4653,r:0.3598},{n:1709,d:4015,r:0.4257},{n:2168,d:5230,r:0.4145},{n:2532,d:5755,r:0.44},{n:2253,d:4496,r:0.5011},{n:391,d:404,r:0.9678},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null},{n:0,d:0,r:null}],ytd:{n:10727,d:24553,r:0.4369}},
+      "전주":{m:[{n:724,d:1936,r:0.374},{n:608,d:1682,r:0.3615},{n:880,d:2057,r:0.4278},{n:1095,d:2343,r:0.4673},{n:978,d:1865,r:0.5244},{n:136,d:184,r:0.7391},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:4421,d:10067,r:0.4392}},
+      "평택":{m:[{n:520,d:1394,r:0.373},{n:611,d:1233,r:0.4955},{n:703,d:1577,r:0.4458},{n:809,d:1727,r:0.4684},{n:783,d:1331,r:0.5883},{n:146,d:117,r:1.2479},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:3572,d:7379,r:0.4841}},
+      "군산":{m:[{n:110,d:365,r:0.3014},{n:133,d:338,r:0.3935},{n:151,d:453,r:0.3333},{n:148,d:527,r:0.2808},{n:113,d:402,r:0.2811},{n:26,d:28,r:0.9286},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:681,d:2113,r:0.3223}},
+      "목포":{m:[{n:167,d:486,r:0.3436},{n:198,d:401,r:0.4938},{n:186,d:601,r:0.3095},{n:233,d:565,r:0.4124},{n:157,d:478,r:0.3285},{n:35,d:20,r:1.75},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:976,d:2551,r:0.3826}},
+      "서산":{m:[{n:153,d:472,r:0.3242},{n:159,d:361,r:0.4404},{n:248,d:542,r:0.4576},{n:247,d:593,r:0.4165},{n:222,d:420,r:0.5286},{n:48,d:55,r:0.8727},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null},{n:null,d:0,r:null}],ytd:{n:1077,d:2443,r:0.4409}},
     }},
     {key:"ccrs",name:"CCR-S",target:null,mode:"count",branches:{
       "NT":{m:[{n:77,d:190},{n:75,d:190},{n:70,d:190},{n:52,d:190},{n:44,d:190},{n:null,d:190},{n:null,d:190},{n:null,d:190},{n:null,d:190},{n:null,d:190},{n:null,d:190},{n:null,d:190}],ytd:{n:318,d:2280}},
@@ -1450,7 +1452,7 @@ function toggleUnit() {
 }
 
 // ==================== TABS ====================
-const TABS = ["exec","overview","branch","service","detail","analysis","incro","pc_NT","pc_전주","pc_평택","pc_군산","pc_목포","pc_서산","b_전주","b_평택","b_군산","b_목포","b_서산"];
+const TABS = ["exec","overview","branch","service","detail","analysis","incro","pc_NT","pc_전주","pc_평택","pc_군산","pc_목포","pc_서산","pc_ccrs","b_전주","b_평택","b_군산","b_목포","b_서산"];
 let rendered = {};
 function switchTab(id) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-tab') === id));
@@ -1461,7 +1463,8 @@ function switchTab(id) {
   if(id === 'detail' && !rendered.detail) { renderDetailTab(); rendered.detail = 1; }
   if(id === 'analysis' && !rendered.analysis) { renderAnalysisTab(); rendered.analysis = 1; }
   if(id === 'incro' && !rendered.incro) { renderIncRo(); rendered.incro = 1; }
-  if(id.startsWith('pc_')) { const bn = id.slice(3); if(!rendered[id]) { renderProactiveBranch(bn); rendered[id] = 1; } }
+  if(id === 'pc_ccrs') { if(!rendered['pc_ccrs']) { renderCcrsInputTab(); rendered['pc_ccrs'] = 1; } }
+  else if(id.startsWith('pc_')) { const bn = id.slice(3); if(!rendered[id]) { renderProactiveBranch(bn); rendered[id] = 1; } }
   if(id.startsWith('b_')) { const bn = id.slice(2); if(!rendered[id]) { renderBranchDetail(bn); rendered[id] = 1; } }
 }
 
@@ -1469,7 +1472,7 @@ function switchTab(id) {
 // 사이드바 대분류 → 상단 탭바를 해당 그룹 탭으로 전환. 기존 switchTab 로직 그대로 활용.
 const GROUPS = {
   leadtime: ['exec','overview','branch','service','detail','analysis','incro','b_전주','b_평택','b_군산','b_목포','b_서산'],
-  proactive: ['pc_NT','pc_전주','pc_평택','pc_군산','pc_목포','pc_서산']
+  proactive: ['pc_NT','pc_전주','pc_평택','pc_군산','pc_목포','pc_서산','pc_ccrs']
 };
 const GROUP_DEFAULT_TAB = { leadtime: 'overview', proactive: 'pc_NT' };
 function switchGroup(g) {
@@ -1559,7 +1562,7 @@ function renderProactiveBranch(bn) {
 
   const latest = (PD.latestLabel) ? `완전월 1월 ~ ${PD.latestLabel}` : '';
   const disp = (bn === 'NT') ? '전지점 통합 (NT 전체)' : bn;
-  const ccrsPanel = (bn === 'NT') ? '' : renderCcrsBranchInput(bn);
+  const ccrsPanel = '';
   el.innerHTML = ccrsPanel + `<div class="card">
     <div class="card-title">${disp} · Proactive Care 월별 달성현황 <span style="font-size:12px;font-weight:600;color:var(--cyan);margin-left:6px">${latest}</span></div>
     <div class="card-sub">행=KPI · 열=1~12월 · 각 칸: 달성률 / 진행·전체건수 (CCR-S는 진행 / 월목표) · <span style="color:var(--green)">초록=달성</span> <span style="color:var(--red)">빨강=미달</span> · <span style="color:var(--amber)">부분=집계중인 당월(비율 참고용)</span></div>
@@ -1621,61 +1624,77 @@ function _ccrsFullCode() {
 
 const _ccrsInStyle = 'padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--bg2);color:var(--text)';
 
-function renderCcrsBranchInput(bn) {
-  const store = _ccrsStore();
-  const months = PROACTIVE_DATA.months || [];
-  if (!_ccrsKpi() || !months.length) return '';
+// CCR-S 전용 입력 탭 (CSV 한 줄 방식)
+function renderCcrsInputTab() {
+  const el = document.getElementById('pcbd-ccrs');
+  if (!el) return;
+  const k = _ccrsKpi();
+  const months = (typeof PROACTIVE_DATA !== 'undefined' && PROACTIVE_DATA.months) || [];
+  if (!k || !months.length) { el.innerHTML = '<div class="card">CCR-S 데이터가 없습니다.</div>'; return; }
   const defIdx = Math.min((PROACTIVE_DATA.completeMonths || 0), months.length - 1);
   const opts = months.map((mo, i) => `<option value="${i}" ${i === defIdx ? 'selected' : ''}>${mo}</option>`).join('');
-  const v = (store[defIdx] && store[defIdx][bn] != null) ? store[defIdx][bn] : 0;
-  return `<div class="card" style="margin-bottom:18px;border:1px solid var(--cyan)">
-    <div class="card-title">${bn} · CCR-S 진행건수 입력
-      <span style="font-size:11px;font-weight:500;color:var(--text-muted);margin-left:6px">월 선택 → 입력 → 코드 생성 → <code>source/ccrs_manual.py</code> 덮어쓰기 → build</span>
-    </div>
-    <div style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;margin-top:12px">
+  el.innerHTML = `<div class="card" style="border:1px solid var(--cyan)">
+    <div class="card-title">CCR-S 진행건수 입력 <span style="font-size:12px;font-weight:500;color:var(--text-muted);margin-left:6px">월 선택 → 숫자 5개 붙여넣기 → 코드 생성 → <code>ccrs_manual.py</code> 덮어쓰기 → build</span></div>
+    <div style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;margin-top:14px">
       <div style="display:flex;flex-direction:column;gap:3px">
         <label style="font-size:11px;color:var(--text-muted)">월</label>
-        <select id="ccrs-month-${bn}" onchange="ccrsBranchLoad('${bn}')" style="${_ccrsInStyle}">${opts}</select>
+        <select id="ccrs-month" onchange="ccrsCsvLoad()" style="${_ccrsInStyle}">${opts}</select>
       </div>
-      <div style="display:flex;flex-direction:column;gap:3px">
-        <label style="font-size:11px;color:var(--text-muted)">${bn} 진행건수</label>
-        <input type="number" min="0" id="ccrsv-${bn}" value="${v}" style="width:90px;${_ccrsInStyle}">
+      <div style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:280px">
+        <label style="font-size:11px;color:var(--text-muted)">진행건수 (순서: <b style="color:var(--text)">전주, 평택, 군산, 목포, 서산</b>)</label>
+        <input type="text" id="ccrs-csv" placeholder="예:  12, 8, 5, 3, 2" style="${_ccrsInStyle};font-family:var(--mono)">
       </div>
-      <button onclick="ccrsBranchGen('${bn}')" style="padding:8px 16px;border:none;border-radius:7px;background:var(--accent);color:#fff;font-weight:600;cursor:pointer">코드 생성</button>
+      <button onclick="ccrsCsvGen()" style="padding:8px 18px;border:none;border-radius:7px;background:var(--accent);color:#fff;font-weight:600;cursor:pointer">코드 생성</button>
     </div>
-    <div id="ccrs-out-wrap-${bn}" style="display:none;margin-top:14px">
+    <div id="ccrs-msg" style="font-size:12px;margin-top:8px;min-height:16px"></div>
+    <div id="ccrs-preview" style="font-size:12px;color:var(--text-muted);margin-top:2px"></div>
+    <div id="ccrs-out-wrap" style="display:none;margin-top:14px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <span style="font-size:11px;color:var(--text-muted)">아래 전체 복사 → <code>ccrs_manual.py</code> 통째로 덮어쓰기 (5지점 값 모두 포함됨)</span>
-        <button id="ccrs-copy-${bn}" onclick="ccrsBranchCopy('${bn}')" style="padding:5px 12px;border:none;border-radius:6px;background:var(--green);color:#fff;font-size:12px;font-weight:600;cursor:pointer">복사</button>
+        <span style="font-size:11px;color:var(--text-muted)">아래 전체 복사 → <code>source/ccrs_manual.py</code> 통째로 덮어쓰기 (5지점 + 과거 모두 포함)</span>
+        <button id="ccrs-copy-btn" onclick="ccrsCopy()" style="padding:5px 14px;border:none;border-radius:6px;background:var(--green);color:#fff;font-size:12px;font-weight:600;cursor:pointer">복사</button>
       </div>
-      <textarea id="ccrs-out-${bn}" readonly style="width:100%;height:170px;font-family:var(--mono);font-size:11px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);box-sizing:border-box"></textarea>
+      <textarea id="ccrs-out" readonly style="width:100%;height:180px;font-family:var(--mono);font-size:11px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);box-sizing:border-box"></textarea>
     </div>
   </div>`;
+  ccrsCsvLoad();
 }
 
-function ccrsBranchLoad(bn) {
+function ccrsCsvLoad() {
   const store = _ccrsStore();
-  const i = +document.getElementById('ccrs-month-' + bn).value;
-  const el = document.getElementById('ccrsv-' + bn);
-  if (el) el.value = (store[i] && store[i][bn] != null) ? store[i][bn] : 0;
+  const i = +document.getElementById('ccrs-month').value;
+  const row = store[i] || {};
+  const vals = CCRS_BR.map(b => (row[b] != null ? row[b] : 0));
+  document.getElementById('ccrs-csv').value = vals.join(', ');
+  const pv = document.getElementById('ccrs-preview');
+  if (pv) pv.textContent = '현재 저장값 → ' + CCRS_BR.map((b, idx) => `${b} ${vals[idx]}`).join(' · ');
+  const msg = document.getElementById('ccrs-msg'); if (msg) msg.textContent = '';
 }
 
-function ccrsBranchGen(bn) {
+function ccrsCsvGen() {
+  const msg = document.getElementById('ccrs-msg');
+  const raw = (document.getElementById('ccrs-csv').value || '').trim();
+  const parts = raw.split(/[,\s]+/).filter(x => x !== '');
+  if (parts.length !== 5 || parts.some(p => isNaN(Number(p)))) {
+    msg.style.color = 'var(--red)';
+    msg.textContent = '⚠ 숫자 5개를 콤마로 입력하세요 (전주, 평택, 군산, 목포, 서산). 예: 12, 8, 5, 3, 2';
+    return;
+  }
   const store = _ccrsStore();
-  const i = +document.getElementById('ccrs-month-' + bn).value;
-  const el = document.getElementById('ccrsv-' + bn);
-  const val = Math.max(0, parseInt((el && el.value) || '0', 10) || 0);
-  if (!store[i]) store[i] = {};
-  store[i][bn] = val;                     // 세션 작업본에 이 지점 값 반영 (다른 지점 값 보존)
-  document.getElementById('ccrs-out-' + bn).value = _ccrsFullCode();
-  document.getElementById('ccrs-out-wrap-' + bn).style.display = 'block';
+  const i = +document.getElementById('ccrs-month').value;
+  const row = {};
+  CCRS_BR.forEach((b, idx) => { row[b] = Math.max(0, parseInt(parts[idx], 10) || 0); });
+  store[i] = row;
+  msg.style.color = 'var(--green)';
+  msg.textContent = `✓ ${PROACTIVE_DATA.months[i]} 반영: ` + CCRS_BR.map((b, idx) => `${b} ${row[b]}`).join(' · ');
+  document.getElementById('ccrs-out').value = _ccrsFullCode();
+  document.getElementById('ccrs-out-wrap').style.display = 'block';
 }
 
-function ccrsBranchCopy(bn) {
-  const t = document.getElementById('ccrs-out-' + bn);
+function ccrsCopy() {
+  const t = document.getElementById('ccrs-out');
   t.select();
   try { navigator.clipboard.writeText(t.value); } catch (e) { try { document.execCommand('copy'); } catch (e2) {} }
-  const btn = document.getElementById('ccrs-copy-' + bn);
+  const btn = document.getElementById('ccrs-copy-btn');
   if (btn) { const o = btn.textContent; btn.textContent = '복사됨 ✓'; setTimeout(() => { btn.textContent = o; }, 1500); }
 }
 
