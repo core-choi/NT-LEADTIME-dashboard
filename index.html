@@ -449,7 +449,7 @@ body { padding-left: 200px; }
       </div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-      <div class="header-date"><span class="dot"></span><span>2026-06-05 10:03 업데이트</span></div>
+      <div class="header-date"><span class="dot"></span><span>2026-06-05 10:13 업데이트</span></div>
       <div class="month-picker-wrap">
         <label class="month-picker-label">기준월</label>
         <span class="month-picker-sublabel">연도</span>
@@ -1734,14 +1734,7 @@ function renderProactiveBranch(bn) {
         : Math.ceil(rec.d - rec.n);
       if (need > 0) extra = `부족 ${need.toLocaleString()}`;
     }
-    if (mode === 'partial') {
-      // 부분월: 비율 왜곡 가능 -> 중립 회색 + (부분) 표기, 달성/미달 색상 미적용
-      return `<td style="opacity:.7">
-        <div style="font-weight:700;color:var(--text-muted);font-size:12px">${main}</div>
-        <div style="font-size:9px;color:var(--text-muted);font-family:var(--mono)">${sub}</div>
-        <div style="font-size:8px;color:var(--amber)">부분</div>
-      </td>`;
-    }
+    // 당월(진행중) 포함 모든 달: 목표 기준 달성=초록 / 미달=빨강 (부분 표기 제거)
     const col = met === null ? 'var(--text)' : (met ? 'var(--green)' : 'var(--red)');
     return `<td style="${bgYTD}">
       <div style="font-weight:700;color:${col};font-size:12px">${main}</div>
@@ -1771,7 +1764,7 @@ function renderProactiveBranch(bn) {
   const ccrsPanel = '';
   el.innerHTML = ccrsPanel + `<div class="card">
     <div class="card-title">${disp} · Proactive Care 월별 달성현황 <span style="font-size:12px;font-weight:600;color:var(--cyan);margin-left:6px">${latest}</span></div>
-    <div class="card-sub">행=KPI · 열=1~12월 · 각 칸: 달성률 / 진행·전체건수 (CCR-S는 진행 / 월목표) · <span style="color:var(--green)">초록=달성</span> <span style="color:var(--red)">빨강=미달</span> · <span style="color:var(--red)">부족 N=목표 도달까지 추가 필요 건수</span> · <span style="color:var(--amber)">부분=집계중인 당월(비율 참고용)</span></div>
+    <div class="card-sub">행=KPI · 열=1~12월 · 각 칸: 달성률 / 진행·전체건수 (CCR-S는 진행 / 월목표) · <span style="color:var(--green)">초록=달성</span> <span style="color:var(--red)">빨강=미달</span> · <span style="color:var(--red)">부족 N=목표 도달까지 추가 필요 건수</span></div>
     <div style="overflow:auto;margin-top:14px">
       <table class="data-table">
         <thead><tr>${heads.map((h,i)=>`<th${i===heads.length-1?' style="background:var(--bg3)"':''}>${h}</th>`).join('')}</tr></thead>
