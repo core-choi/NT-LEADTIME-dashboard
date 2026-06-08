@@ -355,6 +355,11 @@ body { padding-left: 200px; }
 .card > div:has(> table.data-table#table-detail) {
   max-height: none !important;
 }
+/* Proactive Care 월별 표는 전체 표시(세로 스크롤 없음) — 높이 제한 제외 */
+.card > div:has(> table.pc-table) {
+  max-height: none !important;
+  overflow: visible !important;
+}
 /* data-table 헤더를 sticky로 고정 - 스크롤 시에도 헤더 보이게 */
 .card > div:has(> table.data-table) table.data-table thead th {
   position: sticky; top: 0; z-index: 2;
@@ -456,7 +461,7 @@ body { padding-left: 200px; }
       </div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-      <div class="header-date"><span class="dot"></span><span>2026-06-08 15:47 업데이트</span></div>
+      <div class="header-date"><span class="dot"></span><span>2026-06-08 15:53 업데이트</span></div>
       <div class="month-picker-wrap">
         <label class="month-picker-label">기준월</label>
         <span class="month-picker-sublabel">연도</span>
