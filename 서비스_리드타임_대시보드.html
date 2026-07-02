@@ -461,7 +461,7 @@ body { padding-left: 200px; }
       </div>
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-      <div class="header-date"><span class="dot"></span><span>2026-07-02 09:08 업데이트</span></div>
+      <div class="header-date"><span class="dot"></span><span>2026-07-02 09:35 업데이트</span></div>
       <div class="month-picker-wrap">
         <label class="month-picker-label">기준월</label>
         <span class="month-picker-sublabel">연도</span>
@@ -1463,7 +1463,16 @@ function renderProactiveBranch(bn) {
       const col = met === null ? 'var(--text-muted)' : (met ? 'var(--green)' : 'var(--red)');
       tds += `<td style="font-weight:600;font-size:11px;color:${col}">${(v*100).toFixed(1)}%</td>`;
     }
-    tds += `<td style="background:rgba(37,99,235,.05);color:var(--text-muted);font-size:11px">-</td>`;
+    // YTD = 전달값(비율)의 평균. 비율지표라 합산이 아닌 유효월 단순평균.
+    const vals = (arr || []).filter(v => v !== null && v !== undefined);
+    if (vals.length) {
+      const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+      const metY = (target !== null && target !== undefined) ? avg >= target : null;
+      const colY = metY === null ? 'var(--text-muted)' : (metY ? 'var(--green)' : 'var(--red)');
+      tds += `<td style="background:rgba(37,99,235,.05);font-weight:700;font-size:11px;color:${colY}">${(avg*100).toFixed(1)}%</td>`;
+    } else {
+      tds += `<td style="background:rgba(37,99,235,.05);color:var(--text-muted);font-size:11px">-</td>`;
+    }
     return `<tr style="background:rgba(148,163,184,.05)">${tds}</tr>`;
   }
 
